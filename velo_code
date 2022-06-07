@@ -1,0 +1,16 @@
+//turn on "Developer Mode" (located in the top toolbar) and copy paste the following code into the code editor that opens at the bottom of the page.
+//if you have a lightbox named "Announcement" (no quotes necessary when naming the lightbox in the editor), then it will show the lightbox if it is 
+//the user's first time visiting the site since they started their session.
+
+import {session} from 'wix-storage';
+import wixWindow from 'wix-window';
+
+$w.onReady(function () {
+  // flag is not found
+  if(!session.getItem("firstTimePopupShown")) {
+    // open popup
+    wixWindow.openLightbox("Announcement");
+    // set flag for future visits
+    session.setItem("firstTimePopupShown", "yes");
+  }
+} );
